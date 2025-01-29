@@ -1,9 +1,10 @@
-- 👋 Hi there, I’m Zorin Mikhail aka WlcM111.
+- ##👋 Hi there, I’m Zorin Mikhail aka WlcM111.##
 - 👀 I’m interested in backend development especially in microservices development.
 - I’m a second-year student of Saint-Petersburg State University of Aerospace.
 - I’m currently learning Docker, PostgreSQL and Kafka.
 - How to reach me - Check my bio and you will find my social networks.
-- 
+
+
 ## My tech stack
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
