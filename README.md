@@ -1,5 +1,5 @@
 # Hi there, I’m Zorin Mikhail aka WlcM111.
-- 👀 I’m interested in backend development especially in microservices development.
+- I’m interested in backend development especially in microservices development.
 - I’m a second-year student of Saint-Petersburg State University of Aerospace.
 - I’m currently learning Docker, PostgreSQL and Kafka.
 - How to reach me - Check my bio and you will find my social networks.
