@@ -95,6 +95,23 @@ Asynchronous service for processing and delivering notifications.
 
 **Stack:** `Go` `Kafka` `PostgreSQL` `Gin`
 
+# Unified AI Workspace
+
+OpenWebUI-based multimodal AI workspace that unifies text chat, voice workflows, image generation, image understanding, file Q&A, web search, URL parsing, long-term memory, and presentation generation in a single chat interface.
+
+- Implemented automatic capability routing to choose the right model or tool for each user request
+- Added manual model selection so users can override routing when needed
+- Built long-term memory and context reuse for more consistent multi-turn conversations
+- Integrated file ingestion, retrieval, and multimodal RAG for document-based Q&A scenarios
+- Added voice workflows with audio transcription and follow-up chat over transcribed content
+- Implemented image understanding and image generation flows directly inside the chat UX
+- Integrated web search and URL parsing so external information can be used without leaving the workspace
+- Added artifact-based outputs for generated images, research results, and presentation workflows
+- Extended OpenWebUI with a dedicated MWS layer using a cleaner application / domain / infrastructure structure
+- Configured Docker and Docker Compose for one-command local deployment and easier demo setup
+
+**Stack:** Python `FastAPI` `TypeScript` `Svelte` `OpenWebUI` `Docker` `Docker Compose` `SQLite` `MWS GPT API` `RAG` `VLM` `ASR`
+
 ---
 
 ## Education
