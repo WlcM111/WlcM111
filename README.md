@@ -44,7 +44,7 @@ I am a **3rd-year Applied Informatics student at SUAI** with **1.5+ years of bac
 
 ---
 
-## Selected Projects
+## Projects:
 
 ### Amber Messenger
 Full-featured backend for a messenger with phone-based authentication, personal and group chats, and real-time communication.
