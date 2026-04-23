@@ -140,3 +140,4 @@ OpenWebUI-based multimodal AI workspace that unifies text chat, voice workflows,
 - **Telegram:** [@wlcm666z](https://t.me/wlcm666z)
 - **GitHub:** [WlcM111](https://github.com/WlcM111)
 - **LeetCode:** [wlcm](https://leetcode.com/u/wlcm/)
+- **CodeForces:** [Wlcm666](https://codeforces.com/profile/Wlcm666)
