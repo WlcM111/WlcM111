@@ -45,6 +45,11 @@ Backend developer working in **Go** on **microservices, event-driven systems and
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger/OpenAPI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
+### Licences
+[![CI](https://github.com/WlcM111/vpn_system/actions/workflows/ci.yml/badge.svg)](https://github.com/WlcM111/vpn_system/actions/workflows/ci.yml)
+[![Go Version](https://img.shields.io/badge/go-1.25-00ADD8?logo=go)](https://go.dev/)
+[![License](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
+
 ---
 
 ## Projects
