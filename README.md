@@ -1,7 +1,7 @@
 # Mikhail Zorin — Go Backend Developer
 
-Backend developer working in **Go** on **microservices, event-driven systems and payment flows**.
-3rd-year Applied Informatics student at **SUAI** (GPA 4.89) with **1.5+ years** of backend development across production, contract and team projects. Main interests: backend architecture, distributed systems, storage-oriented services and infrastructure engineering.
+Backend developer working in **Go** on **microservices, event-driven systems and payment flows**, with hands-on **front-end experience in TypeScript** and an interest in full-stack work.
+3rd-year Applied Informatics student at **SUAI** (GPA 4.89) with **1.5+ years** of backend development across production, contract and team projects. Most of my work is server-side — distributed systems, storage-oriented services and infrastructure — but I have also built the front-end half of an application in TypeScript and Svelte, and I enjoy owning a feature end to end, from the database schema to what the user actually sees.
 
 ---
 
@@ -45,7 +45,7 @@ Backend developer working in **Go** on **microservices, event-driven systems and
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger/OpenAPI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 
-### Licences
+### Build & Status
 [![CI](https://github.com/WlcM111/vpn_system/actions/workflows/ci.yml/badge.svg)](https://github.com/WlcM111/vpn_system/actions/workflows/ci.yml)
 [![Go Version](https://img.shields.io/badge/go-1.25-00ADD8?logo=go)](https://go.dev/)
 [![License](https://img.shields.io/badge/license-proprietary-lightgrey)](LICENSE)
@@ -60,13 +60,13 @@ Backend developer working in **Go** on **microservices, event-driven systems and
 - Took the product from zero to production alone: Telegram gateway, subscriptions, card billing, crypto billing, node orchestrator and node agent — **100+ users, 150+ payments processed**
 - Payment workflow orchestration: recurring charges, grace periods, automatic refunds and retry schedules as state machines driven by background workers using `FOR UPDATE SKIP LOCKED` — **no double charge in 3 months of operation**
 - Two payment providers (YooKassa cards, CryptoBot USDT/TON/BTC/ETH) with **webhook deduplication by SHA-256 body fingerprint**, amount reconciliation and idempotent settlement
-- **At-least-once delivery** across services over Kafka (8 topics + DLT): transactional **outbox/inbox** on PostgreSQL, exponential retry, per-command idempotency — zero lost or twice-applied events
+- **At-least-once delivery** across services over Kafka (16 topics including dead-letter): transactional **outbox/inbox** on PostgreSQL, exponential retry, per-command idempotency — zero lost or twice-applied events
 - **Database per service**: the orchestrator rebuilds user access from events instead of reading other services' databases
 - Node allocation with weighted least-load, sticky assignment and heartbeat health checks; **self-healing reconciler** on a Postgres advisory lock restores access within 10 minutes of a node failure
 - Node agent driving **Xray over gRPC** (heartbeat, traffic reports, offline command buffer); found and fixed a production bug where the agent hung forever after losing Kafka connectivity
-- **25+ Prometheus metrics** (consumer lag, outbox depth, light/heavy aggregates on separate intervals) and Grafana dashboards
+- **28 Prometheus metrics** (consumer lag, outbox depth, light/heavy aggregates on separate intervals) and Grafana dashboards
 
-**Stack:** `Go` `PostgreSQL` `Kafka` `Redis` `gRPC` `Docker` `Prometheus` `Grafana` `Xray/VLESS`
+**Stack:** `Go` `PostgreSQL` `Kafka` `Redis` `gRPC` `Docker` `Prometheus` `Grafana` `Xray/VLESS` `Hysteria`
 
 ---
 
@@ -104,6 +104,29 @@ Backend for a messenger with phone-based authentication, personal and group chat
 - Redis for SMS codes, caching and presence tracking
 
 **Stack:** `Go` `PostgreSQL` `Redis` `WebSocket` `Docker` `JWT` `Swagger`
+
+---
+
+## Open Source
+
+### pgoutbox — transactional outbox for Go
+**MIT-licensed library**, extracted from House VPN and used by it in production.
+
+- **At-least-once delivery on PostgreSQL**: messages are written in the same transaction as your business data, so an event can never be published without its state change
+- **Pluggable publisher** (Kafka implementation included), exponential retry with capped backoff and dead-letter routing
+- **Idempotent inbox helper**: deduplication and side effects commit together, so a redelivered message applies exactly once
+- Covered by **integration tests against a real PostgreSQL** started by testcontainers — transaction atomicity, concurrent `FOR UPDATE SKIP LOCKED`, inbox idempotency
+
+**Stack:** `Go` `PostgreSQL` `Kafka` `testcontainers`
+
+### Deputy (Temporal) — contribution
+**Open pull request [#316](https://github.com/temporalio/deputy/pull/316)** to Temporal's Apache-2.0 supply-chain security tool.
+
+- Fixed a bug where two `time.Time` values were compared with `!=` instead of `Equal`, so the same instant in two time zones rendered a misleading extra *updated* entry in the timeline
+- Added a **regression test** reproducing the bug with UTC and UTC+01 representations of one instant — fails before the fix, passes after
+- Verified with the package suite, race detector, `go vet` and a full project build before submitting
+
+**Stack:** `Go` `Apache 2.0`
 
 ---
 
